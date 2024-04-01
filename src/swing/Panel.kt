@@ -4,12 +4,12 @@ import gui.Background
 import gui.Grid
 import input.KeyInput
 import input.MouseInput
-import main.Event
-import tetrominoes.Generator.generate
+import game.Event
+import game.Game
 
 import java.awt.Graphics
 import javax.swing.JPanel
-class Panel: JPanel() {
+class Panel : JPanel() {
     companion object {
         const val BOARD_WIDTH = 800
         const val BOARD_HEIGHT = 600
@@ -18,10 +18,12 @@ class Panel: JPanel() {
         isFocusable = true
         addKeyListener(KeyInput())
         addMouseListener(MouseInput())
-        Event()
+        val game = Game(this)
+        val event = Event(this)
+        game.start()
+    }
+    fun update() {
 
-        val tetromino = generate()
-        print(tetromino.name)
     }
     override fun paintComponent(g: Graphics?) {
         super.paintComponent(g)

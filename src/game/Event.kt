@@ -1,12 +1,9 @@
-package main
+package game
 
+import swing.Panel
 import java.awt.event.ActionEvent
 import java.awt.event.ActionListener
-import javax.swing.Timer
-class Event: ActionListener {
-    init {
-        Timer(100, this).start()
-    }
+class Event(private var panel: Panel) : ActionListener {
     override fun actionPerformed(e: ActionEvent?) {
     }
 }

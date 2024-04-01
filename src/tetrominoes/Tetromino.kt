@@ -10,11 +10,11 @@ object Generator {
         return tetrominoClasses[randomIndex]
     }
 }
-open class Tetromino {
-    lateinit var name: String
-}
 interface Rotatable {
     fun rotate()
+}
+open class Tetromino {
+    lateinit var name: String
 }
 class I: Tetromino(), Rotatable {
     init {

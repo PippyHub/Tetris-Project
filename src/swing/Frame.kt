@@ -2,7 +2,7 @@ package swing
 
 import java.awt.Dimension
 import javax.swing.JFrame
-private class Frame: JFrame() {
+private class Frame : JFrame() {
     val boardWidth = Panel.BOARD_WIDTH
     val boardHeight = Panel.BOARD_HEIGHT
     val panel = Panel()
@@ -14,7 +14,6 @@ private class Frame: JFrame() {
         contentPane.preferredSize = Dimension(boardWidth, boardHeight)
         defaultCloseOperation = EXIT_ON_CLOSE
         add(panel)
-        panel.requestFocus()
         pack()
         setLocationRelativeTo(null)
         isResizable = false

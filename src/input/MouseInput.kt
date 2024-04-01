@@ -3,7 +3,7 @@ package input
 import java.awt.event.MouseEvent
 import java.awt.event.MouseListener
 import java.awt.event.MouseMotionListener
-class MouseInput: MouseListener, MouseMotionListener {
+class MouseInput : MouseListener, MouseMotionListener {
     override fun mouseClicked(e: MouseEvent?) {
         TODO("Not yet implemented")
     }
