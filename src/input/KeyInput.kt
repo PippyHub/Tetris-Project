@@ -1,8 +1,9 @@
 package input
 
+import swing.Panel
 import java.awt.event.KeyEvent
 import java.awt.event.KeyListener
-class KeyInput : KeyListener {
+class KeyInput(private var panel: Panel) : KeyListener {
     override fun keyTyped(e: KeyEvent?) {
         TODO("Not yet implemented")
     }

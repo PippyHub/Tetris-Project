@@ -1,17 +1,27 @@
 package input
 
+import swing.Panel
 import java.awt.event.MouseEvent
 import java.awt.event.MouseListener
 import java.awt.event.MouseMotionListener
-class MouseInput : MouseListener, MouseMotionListener {
+class MouseInput(private var panel: Panel) : MouseListener, MouseMotionListener {
+    private var running = false
     override fun mouseClicked(e: MouseEvent?) {
-        TODO("Not yet implemented")
+        if (e?.button == MouseEvent.BUTTON1) {
+            if (!running) {
+                panel.updateHandler.start()
+                running = true
+            }
+        } else if (e?.button == MouseEvent.BUTTON3) {
+            if (running) {
+                panel.updateHandler.stop()
+                running = false
+            }
+        }
     }
     override fun mousePressed(e: MouseEvent?) {
-        TODO("Not yet implemented")
     }
     override fun mouseReleased(e: MouseEvent?) {
-        TODO("Not yet implemented")
     }
     override fun mouseEntered(e: MouseEvent?) {
     }

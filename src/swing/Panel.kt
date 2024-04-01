@@ -1,11 +1,11 @@
 package swing
 
-import gui.Background
-import gui.Grid
+import draw.Background
+import draw.Grid
 import input.KeyInput
 import input.MouseInput
-import game.Event
-import game.Game
+import gameloop.EventHandler
+import gameloop.UpdateHandler
 
 import java.awt.Graphics
 import javax.swing.JPanel
@@ -14,13 +14,12 @@ class Panel : JPanel() {
         const val BOARD_WIDTH = 800
         const val BOARD_HEIGHT = 600
     }
+    val updateHandler = UpdateHandler(this)
+    val eventHandler = EventHandler(this)
     init {
         isFocusable = true
-        addKeyListener(KeyInput())
-        addMouseListener(MouseInput())
-        val game = Game(this)
-        val event = Event(this)
-        game.start()
+        addKeyListener(KeyInput(this))
+        addMouseListener(MouseInput(this))
     }
     fun update() {
 

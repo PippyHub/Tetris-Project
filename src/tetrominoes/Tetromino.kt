@@ -14,48 +14,46 @@ interface Rotatable {
     fun rotate()
 }
 open class Tetromino {
-    lateinit var name: String
+    val mino = 4
+    var minoX = 4
+    var minoY = 0
 }
 class I: Tetromino(), Rotatable {
     init {
-        name = "I"
     }
     override fun rotate() {
     }
 }
 class J: Tetromino(), Rotatable {
     init {
-        name = "J"
     }
     override fun rotate() {
     }
 }
 class L: Tetromino(), Rotatable {
     init {
-        name = "L"
     }
     override fun rotate() {
     }
 }
 class O: Tetromino() {
+    init {
+    }
 }
 class S: Tetromino(), Rotatable {
     init {
-        name = "O"
     }
     override fun rotate() {
     }
 }
 class T: Tetromino(), Rotatable {
     init {
-        name = "S"
     }
     override fun rotate() {
     }
 }
 class Z: Tetromino(), Rotatable {
     init {
-        name = "T"
     }
     override fun rotate() {
     }

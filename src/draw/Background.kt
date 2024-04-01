@@ -1,4 +1,4 @@
-    package gui
+    package draw
 
     import java.awt.Graphics
     import java.awt.Image

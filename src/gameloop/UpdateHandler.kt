@@ -1,7 +1,7 @@
-package game
+package gameloop
 
 import swing.Panel
-class Game(private val panel: Panel) : Runnable {
+class UpdateHandler(private val panel: Panel) : Runnable {
     private val setFrames: Int = 120
     private val setUpdates: Int = 60
     private lateinit var gameThread: Thread
