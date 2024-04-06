@@ -17,10 +17,10 @@ class Game {
     private var tetriminoY = 0
     private var timeExists: Double = 0.0
     private var timeSimulated: Double = 0.0
-    private var gravity: Double = setGravity(1)
+    private var gravity: Double = 0.0 //setGravity(1)
     init {
         repeat(3) {
-            tetriminoList.add(generate())
+            tetriminoList.add(tetriminos.I())
         }
         //TODO("Generate 7 bag")
     }

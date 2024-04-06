@@ -1,6 +1,7 @@
 package input
 
 import swing.Panel
+import tetriminos.Rotatable
 import tetriminos.Tetrimino.Companion.getTetrimino
 import java.awt.event.KeyEvent
 import java.awt.event.KeyListener
@@ -16,13 +17,17 @@ class KeyInput(private var panel: Panel) : KeyListener {
                 KeyEvent.VK_LEFT -> {
                     tetriminoX -= 1
                     tetrimino.setX(tetriminoX)
+                    tetrimino.setCoordinates()
                 }
                 KeyEvent.VK_RIGHT -> {
                     tetriminoX += 1
                     tetrimino.setX(tetriminoX)
+                    tetrimino.setCoordinates()
                 }
                 KeyEvent.VK_UP -> {
-                    TODO("Implement rotation 90 degrees clockwise")
+                    if (tetrimino is Rotatable) {
+                        tetrimino.rotateClockwise()
+                    }
                 }
                 KeyEvent.VK_DOWN -> {
                     TODO("Implement non-locking soft drop")
