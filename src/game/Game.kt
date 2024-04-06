@@ -17,11 +17,12 @@ class Game {
     private var tetriminoY = 0
     private var timeExists: Double = 0.0
     private var timeSimulated: Double = 0.0
-    private var gravity: Double = 0.2598
+    private var gravity: Double = setGravity(1)
     init {
         repeat(3) {
             tetriminoList.add(generate())
         }
+        //TODO("Generate 7 bag")
     }
     fun update(deltaUpdate: Double) {
         timeExists += deltaUpdate
@@ -41,15 +42,18 @@ class Game {
     }
     private fun dropping() {
         if (timeExists > timeSimulated) {
-            if (timeSimulated >= 1.0 / gravity) {
-                tetriminoY++
-            }
+            tetriminoY++
             timeSimulated += 1.0 / gravity
             tetrimino.setY(tetriminoY)
+            tetrimino.setCoordinates()
         }
     }
     fun setGravity(level: Int): Double {
-        val gravityMap = mapOf(
+        val speedCurve = createSpeedCurve()
+        return speedCurve[level] ?: 1.0
+    }
+    private fun createSpeedCurve(): Map<Int, Double> {
+        val speeds = mapOf(
             1 to 0.01667,
             2 to 0.021017,
             3 to 0.026977,
@@ -64,8 +68,12 @@ class Game {
             12 to 0.59,
             13 to 0.92,
             14 to 1.46,
-            15 to 2.36
+            15 to 2.36,
+            16 to 3.91,
+            17 to 6.61,
+            18 to 11.43
         )
-        return gravityMap[level] ?: 1.0
+        val extraSpeeds = (19..25).map { it to 20.0 }
+        return (speeds + extraSpeeds).toMap()
     }
 }

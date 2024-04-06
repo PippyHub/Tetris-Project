@@ -1,10 +1,10 @@
 package tetriminos
 
 import kotlin.random.Random
+
 object Generator {
-    private val tetrominoClasses = listOf(
-        I(), J(), L(), O(), S(), T(), Z()
-    )
+    private val tetrominoClasses = listOf(I(), J(), L(), O(), S(), T(), Z())
+
     fun generate(): Tetrimino {
         val randomIndex = Random.nextInt(0, tetrominoClasses.size)
         return tetrominoClasses[randomIndex]
@@ -23,10 +23,9 @@ open class Tetrimino {
             return currentTetrimino
         }
     }
-    open var minoX = 0
-    open var minoY = 0
-    open var tetrominoX = IntArray(4) { 0 }
-    open var tetrominoY = IntArray(4) { 0 }
+    private var minoX = 0
+    private var minoY = 0
+    var tetrominoCoordinates: Array<Pair<Int, Int>> = emptyArray()
     fun setX(x: Int) {
         minoX = x
     }
@@ -39,45 +38,89 @@ open class Tetrimino {
     fun getY(): Int {
         return minoY
     }
+    open fun setCoordinates() {}
 }
-class I: Tetrimino(), Rotatable {
+class I : Tetrimino(), Rotatable {
     init {
-        tetrominoX = IntArray(4) { minoX }
+        setX(3)
+        setY(0)
+    }
+    override fun setCoordinates() {
+        tetrominoCoordinates = arrayOf(
+            Pair(getX(), getY()),
+            Pair(getX() + 1, getY()),
+            Pair(getX() + 2, getY()),
+            Pair(getX() + 3, getY())
+        )
     }
     override fun rotate() {
     }
 }
-class J: Tetrimino(), Rotatable {
+class J : Tetrimino(), Rotatable {
     init {
-        tetrominoX = intArrayOf(minoY,minoX,minoX,minoX)
+        setX(3)
+        setY(0)
+        setCoordinates()
+    }
+    override fun setCoordinates() {
+        tetrominoCoordinates = arrayOf(
+            Pair(getX(), getY()),
+            Pair(getX(), getY() + 1),
+            Pair(getX(), getY() + 2),
+            Pair(getX() + 1, getY() + 2)
+        )
     }
     override fun rotate() {
     }
 }
+
 class L: Tetrimino(), Rotatable {
     init {
+        setCoordinates()
+    }
+    override fun setCoordinates() {
     }
     override fun rotate() {
     }
 }
 class O: Tetrimino() {
     init {
+        setX(3)
+        setY(0)
+        setCoordinates()
+    }
+    override fun setCoordinates() {
+        tetrominoCoordinates = arrayOf(
+            Pair(getX(), getY()),
+            Pair(getX() + 1, getY()),
+            Pair(getX(), getY() + 1),
+            Pair(getX() + 1, getY() + 1)
+        )
     }
 }
 class S: Tetrimino(), Rotatable {
     init {
+        setCoordinates()
+    }
+    override fun setCoordinates() {
     }
     override fun rotate() {
     }
 }
 class T: Tetrimino(), Rotatable {
     init {
+        setCoordinates()
+    }
+    override fun setCoordinates() {
     }
     override fun rotate() {
     }
 }
 class Z: Tetrimino(), Rotatable {
     init {
+        setCoordinates()
+    }
+    override fun setCoordinates() {
     }
     override fun rotate() {
     }

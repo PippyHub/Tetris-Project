@@ -7,7 +7,7 @@ import game.Game
 import input.KeyInput
 import input.MouseInput
 import gameloop.EventHandler
-import gameloop.UpdateHandler
+import gameloop.FrameHandler
 
 import java.awt.Graphics
 import javax.swing.JPanel
@@ -16,7 +16,7 @@ class Panel : JPanel() {
         const val BOARD_WIDTH = 800
         const val BOARD_HEIGHT = 600
     }
-    val updateHandler = UpdateHandler(this)
+    val updateHandler = FrameHandler(this)
     val eventHandler = EventHandler(this)
     private val game = Game()
     init {

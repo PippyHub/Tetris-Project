@@ -21,6 +21,21 @@ class KeyInput(private var panel: Panel) : KeyListener {
                     tetriminoX += 1
                     tetrimino.setX(tetriminoX)
                 }
+                KeyEvent.VK_UP -> {
+                    TODO("Implement rotation 90 degrees clockwise")
+                }
+                KeyEvent.VK_DOWN -> {
+                    TODO("Implement non-locking soft drop")
+                }
+                KeyEvent.VK_SPACE -> {
+                    TODO("Implement locking hard drop")
+                }
+                KeyEvent.VK_C, KeyEvent.VK_SHIFT -> {
+                    TODO("Implement hold piece functionality")
+                }
+                KeyEvent.VK_Z, KeyEvent.VK_CONTROL -> {
+                    TODO("Implement rotation 90 degrees counterclockwise")
+                }
                 else -> {}
             }
         }

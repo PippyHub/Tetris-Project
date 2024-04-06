@@ -2,9 +2,9 @@ package gameloop
 
 import swing.Panel
 
-class UpdateHandler(private val panel: Panel) : Runnable {
-    private val setFrames: Double = 120.0
-    private val setUpdates: Double = 60.0988
+class FrameHandler(private val panel: Panel) : Runnable {
+    private val setHertz: Double = 120.0
+    private val setFrames: Double = 60.0
     private lateinit var gameThread: Thread
     private var running = false
     init {
@@ -23,45 +23,45 @@ class UpdateHandler(private val panel: Panel) : Runnable {
             e.printStackTrace()
         }
     }
-    private fun update(deltaUpdate: Double) {
-        panel.update(deltaUpdate)
+    private fun update(deltaFrame: Double) {
+        panel.update(deltaFrame)
     }
     private fun repaint() {
         panel.repaint()
     }
     override fun run() {
+        val timePerHertz: Double = 1000000000.0 / setHertz
         val timePerFrame: Double = 1000000000.0 / setFrames
-        val timePerUpdate: Double = 1000000000.0 / setUpdates
-        var lastUpdate: Long = System.nanoTime()
+        var lastFrame: Long = System.nanoTime()
 
+        var hertz = 0.0
         var frames = 0.0
-        var updates = 0.0
         var lastCheck: Long = System.currentTimeMillis()
 
-        var deltaUpdate = 0.0
+        var deltaHertz = 0.0
         var deltaFrame = 0.0
 
         while (running) {
-            val currentUpdate: Long = System.nanoTime()
-            deltaUpdate += (currentUpdate - lastUpdate) / timePerUpdate
-            deltaFrame += (currentUpdate - lastUpdate) / timePerFrame
-            lastUpdate = currentUpdate
+            val currentFrame: Long = System.nanoTime()
+            deltaFrame += (currentFrame - lastFrame) / timePerFrame
+            deltaHertz += (currentFrame - lastFrame) / timePerHertz
+            lastFrame = currentFrame
 
-            if (deltaUpdate >= 1) {
-                update(deltaUpdate)
-                updates++
-                deltaUpdate--
-            }
             if (deltaFrame >= 1) {
-                repaint()
+                update(deltaFrame)
                 frames++
                 deltaFrame--
             }
+            if (deltaHertz >= 1) {
+                repaint()
+                hertz++
+                deltaHertz--
+            }
             if (System.currentTimeMillis() - lastCheck >= 1000) {
+                println("HZ $hertz | FPS $frames")
                 lastCheck = System.currentTimeMillis()
-                println("FPS $frames | UPS $updates")
+                hertz = 0.0
                 frames = 0.0
-                updates = 0.0
             }
         }
     }

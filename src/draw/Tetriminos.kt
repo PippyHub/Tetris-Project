@@ -10,15 +10,15 @@ class Tetriminoes(g: Graphics?) {
     init {
         val tetrimino = getTetrimino()
         g?.color = tetrimino?.let { getColor(it) }
-        if(tetrimino != null) {
-            g?.fillRoundRect(
-                Grid.GRID_X + tetrimino.getX() * minoSize,
-                Grid.GRID_Y + tetrimino.getY() * minoSize,
-                minoSize,
-                minoSize,
-                10,
-                10
-            )
+        tetrimino?.let {
+            for ((x, y) in it.tetrominoCoordinates) {
+                g?.fillRect(
+                    Grid.GRID_X + x * minoSize,
+                    Grid.GRID_Y + y * minoSize,
+                    minoSize,
+                    minoSize
+                )
+            }
         }
     }
     private fun getColor(tetrimino: Tetrimino): Color {
