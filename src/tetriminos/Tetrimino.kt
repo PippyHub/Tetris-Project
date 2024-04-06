@@ -58,6 +58,7 @@ open class Tetrimino {
 }
 class I : Tetrimino(), Rotatable {
     init {
+        setX(3)
         setCoordinates()
     }
     override fun setCoordinates() {
@@ -69,22 +70,22 @@ class I : Tetrimino(), Rotatable {
                 Pair(getX() + 3, getY())
             )
             Orientation.RIGHT_VERTICAL -> arrayOf(
-                Pair(getX() + 1, getY()),
-                Pair(getX() + 1, getY() + 1),
-                Pair(getX() + 1, getY() + 2),
-                Pair(getX() + 1, getY() + 3)
+                Pair(getX() + 2, getY() - 1),
+                Pair(getX() + 2, getY()),
+                Pair(getX() + 2, getY() + 1),
+                Pair(getX() + 2, getY() + 2)
             )
             Orientation.LOWER_HORIZONTAL -> arrayOf(
-                Pair(getX() + 3, getY()),
-                Pair(getX() + 2, getY()),
-                Pair(getX() + 1, getY()),
-                Pair(getX(), getY())
+                Pair(getX(), getY() + 1),
+                Pair(getX() + 1, getY() + 1),
+                Pair(getX() + 2, getY() + 1),
+                Pair(getX() + 3, getY() + 1)
             )
             Orientation.LEFT_VERTICAL -> arrayOf(
-                Pair(getX() + 1, getY() + 3),
-                Pair(getX() + 1, getY() + 2),
+                Pair(getX() + 1, getY() - 1),
+                Pair(getX() + 1, getY()),
                 Pair(getX() + 1, getY() + 1),
-                Pair(getX() + 1, getY())
+                Pair(getX() + 1, getY() + 2)
             )
         }
     }
@@ -94,36 +95,34 @@ class I : Tetrimino(), Rotatable {
 }
 class J : Tetrimino(), Rotatable {
     init {
+        setX(3)
         setCoordinates()
     }
     override fun setCoordinates() {
         tetrominoCoordinates = when (orientation) {
             Orientation.UPPER_HORIZONTAL -> arrayOf(
+                Pair(getX(), getY() - 1),
                 Pair(getX(), getY()),
-                Pair(getX(), getY() + 1),
-                Pair(getX(), getY() + 2),
-                Pair(getX() + 1, getY() + 2)
-            )
-
-            Orientation.RIGHT_VERTICAL -> arrayOf(
-                Pair(getX(), getY() + 1),
-                Pair(getX() + 1, getY() + 1),
-                Pair(getX() + 2, getY() + 1),
+                Pair(getX() + 1, getY()),
                 Pair(getX() + 2, getY())
             )
-
-            Orientation.LOWER_HORIZONTAL -> arrayOf(
-                Pair(getX() + 1, getY() + 2),
-                Pair(getX() + 1, getY() + 1),
-                Pair(getX() + 1, getY()),
-                Pair(getX(), getY())
-            )
-
-            Orientation.LEFT_VERTICAL -> arrayOf(
-                Pair(getX() + 2, getY()),
-                Pair(getX() + 1, getY()),
+            Orientation.RIGHT_VERTICAL -> arrayOf(
                 Pair(getX(), getY()),
-                Pair(getX(), getY() + 1)
+                Pair(getX(), getY()),
+                Pair(getX(), getY()),
+                Pair(getX(), getY()),
+            )
+            Orientation.LOWER_HORIZONTAL -> arrayOf(
+                Pair(getX(), getY()),
+                Pair(getX(), getY()),
+                Pair(getX(), getY()),
+                Pair(getX(), getY()),
+            )
+            Orientation.LEFT_VERTICAL -> arrayOf(
+                Pair(getX(), getY()),
+                Pair(getX(), getY()),
+                Pair(getX(), getY()),
+                Pair(getX(), getY()),
             )
         }
     }
