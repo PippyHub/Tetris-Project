@@ -1,15 +1,17 @@
 package gameloop
 
 import swing.Panel
+
 class UpdateHandler(private val panel: Panel) : Runnable {
-    private val setFrames: Int = 120
-    private val setUpdates: Int = 60
+    private val setFrames: Double = 120.0
+    private val setUpdates: Double = 60.0988
     private lateinit var gameThread: Thread
     private var running = false
     init {
         panel.requestFocus()
     }
     fun start() {
+        running = true
         gameThread = Thread(this)
         gameThread.start()
     }
@@ -21,8 +23,8 @@ class UpdateHandler(private val panel: Panel) : Runnable {
             e.printStackTrace()
         }
     }
-    private fun update() {
-        panel.update()
+    private fun update(deltaUpdate: Double) {
+        panel.update(deltaUpdate)
     }
     private fun repaint() {
         panel.repaint()
@@ -32,22 +34,21 @@ class UpdateHandler(private val panel: Panel) : Runnable {
         val timePerUpdate: Double = 1000000000.0 / setUpdates
         var lastUpdate: Long = System.nanoTime()
 
-        var frames = 0
-        var updates = 0
+        var frames = 0.0
+        var updates = 0.0
         var lastCheck: Long = System.currentTimeMillis()
 
         var deltaUpdate = 0.0
         var deltaFrame = 0.0
-
-        running = true
 
         while (running) {
             val currentUpdate: Long = System.nanoTime()
             deltaUpdate += (currentUpdate - lastUpdate) / timePerUpdate
             deltaFrame += (currentUpdate - lastUpdate) / timePerFrame
             lastUpdate = currentUpdate
+
             if (deltaUpdate >= 1) {
-                update()
+                update(deltaUpdate)
                 updates++
                 deltaUpdate--
             }
@@ -59,8 +60,8 @@ class UpdateHandler(private val panel: Panel) : Runnable {
             if (System.currentTimeMillis() - lastCheck >= 1000) {
                 lastCheck = System.currentTimeMillis()
                 println("FPS $frames | UPS $updates")
-                frames = 0
-                updates = 0
+                frames = 0.0
+                updates = 0.0
             }
         }
     }
