@@ -12,6 +12,7 @@ object Generator {
 }
 interface Rotatable {
     fun rotateClockwise()
+    fun rotateAntiClockwise()
 }
 open class Tetrimino {
     companion object {
@@ -58,124 +59,139 @@ open class Tetrimino {
 }
 class I : Tetrimino(), Rotatable {
     init {
-        setX(3)
-        setCoordinates()
-    }
-    override fun setCoordinates() {
-        tetrominoCoordinates = when (orientation) {
-            Orientation.UPPER_HORIZONTAL -> arrayOf(
-                Pair(getX(), getY()),
-                Pair(getX() + 1, getY()),
-                Pair(getX() + 2, getY()),
-                Pair(getX() + 3, getY())
-            )
-            Orientation.RIGHT_VERTICAL -> arrayOf(
-                Pair(getX() + 2, getY() - 1),
-                Pair(getX() + 2, getY()),
-                Pair(getX() + 2, getY() + 1),
-                Pair(getX() + 2, getY() + 2)
-            )
-            Orientation.LOWER_HORIZONTAL -> arrayOf(
-                Pair(getX(), getY() + 1),
-                Pair(getX() + 1, getY() + 1),
-                Pair(getX() + 2, getY() + 1),
-                Pair(getX() + 3, getY() + 1)
-            )
-            Orientation.LEFT_VERTICAL -> arrayOf(
-                Pair(getX() + 1, getY() - 1),
-                Pair(getX() + 1, getY()),
-                Pair(getX() + 1, getY() + 1),
-                Pair(getX() + 1, getY() + 2)
-            )
-        }
-    }
-    override fun rotateClockwise() {
-        rotateThisClockwise()
-    }
-}
-class J : Tetrimino(), Rotatable {
-    init {
-        setX(3)
+        setX(1)
+        setY(21)
         setCoordinates()
     }
     override fun setCoordinates() {
         tetrominoCoordinates = when (orientation) {
             Orientation.UPPER_HORIZONTAL -> arrayOf(
                 Pair(getX(), getY() - 1),
-                Pair(getX(), getY()),
-                Pair(getX() + 1, getY()),
-                Pair(getX() + 2, getY())
+                Pair(getX() + 1, getY() - 1),
+                Pair(getX() + 2, getY() - 1),
+                Pair(getX() + 3, getY() - 1),
             )
             Orientation.RIGHT_VERTICAL -> arrayOf(
-                Pair(getX(), getY()),
-                Pair(getX(), getY()),
-                Pair(getX(), getY()),
-                Pair(getX(), getY()),
+                Pair(getX() + 2, getY()),
+                Pair(getX() + 2, getY() - 1),
+                Pair(getX() + 2, getY() - 2),
+                Pair(getX() + 2, getY() - 3),
             )
             Orientation.LOWER_HORIZONTAL -> arrayOf(
-                Pair(getX(), getY()),
-                Pair(getX(), getY()),
-                Pair(getX(), getY()),
-                Pair(getX(), getY()),
+                Pair(getX(), getY() - 2),
+                Pair(getX() + 1, getY() - 2),
+                Pair(getX() + 2, getY() - 2),
+                Pair(getX() + 3, getY() - 2),
             )
             Orientation.LEFT_VERTICAL -> arrayOf(
-                Pair(getX(), getY()),
-                Pair(getX(), getY()),
-                Pair(getX(), getY()),
-                Pair(getX(), getY()),
+                Pair(getX() + 1, getY()),
+                Pair(getX() + 1, getY() - 1),
+                Pair(getX() + 1, getY() - 2),
+                Pair(getX() + 1, getY() - 3),
             )
         }
     }
     override fun rotateClockwise() {
         rotateThisClockwise()
     }
+
+    override fun rotateAntiClockwise() {
+    }
 }
-class L : Tetrimino(), Rotatable {
+class J : Tetrimino(), Rotatable {
     init {
+        setX(1)
+        setY(21)
         setCoordinates()
     }
     override fun setCoordinates() {
         tetrominoCoordinates = when (orientation) {
             Orientation.UPPER_HORIZONTAL -> arrayOf(
-                Pair(getX(), getY() + 2),
-                Pair(getX() + 1, getY() + 2),
-                Pair(getX() + 2, getY() + 2),
-                Pair(getX() + 2, getY() + 1)
+                Pair(getX(), getY()),
+                Pair(getX(), getY() - 1),
+                Pair(getX() + 1, getY() - 1),
+                Pair(getX() + 2, getY() - 1),
             )
             Orientation.RIGHT_VERTICAL -> arrayOf(
                 Pair(getX() + 1, getY()),
-                Pair(getX() + 1, getY() + 1),
-                Pair(getX() + 1, getY() + 2),
-                Pair(getX(), getY() + 2)
+                Pair(getX() + 1, getY() - 1),
+                Pair(getX() + 1, getY() - 2),
+                Pair(getX() + 2, getY()),
             )
             Orientation.LOWER_HORIZONTAL -> arrayOf(
-                Pair(getX() + 2, getY()),
-                Pair(getX() + 1, getY()),
-                Pair(getX(), getY()),
-                Pair(getX(), getY() + 1)
+                Pair(getX() + 2, getY() - 2),
+                Pair(getX(), getY() - 1),
+                Pair(getX() + 1, getY() - 1),
+                Pair(getX() + 2, getY() - 1),
             )
             Orientation.LEFT_VERTICAL -> arrayOf(
-                Pair(getX(), getY()),
-                Pair(getX(), getY() + 1),
-                Pair(getX(), getY() + 2),
-                Pair(getX() + 1, getY() + 2)
+                Pair(getX() + 1, getY()),
+                Pair(getX() + 1, getY() - 1),
+                Pair(getX() + 1, getY() - 2),
+                Pair(getX(), getY() - 2),
             )
         }
     }
     override fun rotateClockwise() {
         rotateThisClockwise()
     }
+
+    override fun rotateAntiClockwise() {
+    }
+}
+class L : Tetrimino(), Rotatable {
+    init {
+        setX(1)
+        setY(21)
+        setCoordinates()
+    }
+    override fun setCoordinates() {
+        tetrominoCoordinates = when (orientation) {
+            Orientation.UPPER_HORIZONTAL -> arrayOf(
+                Pair(getX() + 2, getY()),
+                Pair(getX(), getY() - 1),
+                Pair(getX() + 1, getY() - 1),
+                Pair(getX() + 2, getY() - 1),
+            )
+            Orientation.RIGHT_VERTICAL -> arrayOf(
+                Pair(getX() + 1, getY()),
+                Pair(getX() + 1, getY() - 1),
+                Pair(getX() + 1, getY() - 2),
+                Pair(getX() + 2, getY() - 2),
+            )
+            Orientation.LOWER_HORIZONTAL -> arrayOf(
+                Pair(getX(), getY() - 2),
+                Pair(getX(), getY() - 1),
+                Pair(getX() + 1, getY() - 1),
+                Pair(getX() + 2, getY() - 1),
+            )
+            Orientation.LEFT_VERTICAL -> arrayOf(
+                Pair(getX() + 1, getY()),
+                Pair(getX() + 1, getY() - 1),
+                Pair(getX() + 1, getY() - 2),
+                Pair(getX(), getY()),
+            )
+        }
+    }
+    override fun rotateClockwise() {
+        rotateThisClockwise()
+    }
+
+    override fun rotateAntiClockwise() {
+    }
 }
 class O : Tetrimino() {
     init {
+        setX(1)
+        setY(21)
         setCoordinates()
     }
     override fun setCoordinates() {
         tetrominoCoordinates = arrayOf(
-            Pair(getX(), getY()),
             Pair(getX() + 1, getY()),
-            Pair(getX(), getY() + 1),
-            Pair(getX() + 1, getY() + 1)
+            Pair(getX() + 2, getY()),
+            Pair(getX() + 1, getY() - 1),
+            Pair(getX() + 2, getY() - 1),
         )
     }
 }
@@ -186,33 +202,36 @@ class S : Tetrimino(), Rotatable {
     override fun setCoordinates() {
         tetrominoCoordinates = when (orientation) {
             Orientation.UPPER_HORIZONTAL -> arrayOf(
-                Pair(getX() + 1, getY()),
-                Pair(getX() + 2, getY()),
-                Pair(getX(), getY() + 1),
-                Pair(getX() + 1, getY() + 1)
+                Pair(getX(), getY()),
+                Pair(getX(), getY()),
+                Pair(getX(), getY()),
+                Pair(getX(), getY()),
             )
             Orientation.RIGHT_VERTICAL -> arrayOf(
                 Pair(getX(), getY()),
-                Pair(getX(), getY() + 1),
-                Pair(getX() + 1, getY() + 1),
-                Pair(getX() + 1, getY() + 2)
+                Pair(getX(), getY()),
+                Pair(getX(), getY()),
+                Pair(getX(), getY()),
             )
             Orientation.LOWER_HORIZONTAL -> arrayOf(
-                Pair(getX() + 1, getY() + 1),
-                Pair(getX() + 2, getY() + 1),
-                Pair(getX(), getY() + 2),
-                Pair(getX() + 1, getY() + 2)
+                Pair(getX(), getY()),
+                Pair(getX(), getY()),
+                Pair(getX(), getY()),
+                Pair(getX(), getY()),
             )
             Orientation.LEFT_VERTICAL -> arrayOf(
-                Pair(getX() + 1, getY()),
-                Pair(getX() + 1, getY() + 1),
-                Pair(getX() + 2, getY() + 1),
-                Pair(getX() + 2, getY() + 2)
+                Pair(getX(), getY()),
+                Pair(getX(), getY()),
+                Pair(getX(), getY()),
+                Pair(getX(), getY()),
             )
         }
     }
     override fun rotateClockwise() {
         rotateThisClockwise()
+    }
+
+    override fun rotateAntiClockwise() {
     }
 }
 class T : Tetrimino(), Rotatable {
@@ -222,33 +241,36 @@ class T : Tetrimino(), Rotatable {
     override fun setCoordinates() {
         tetrominoCoordinates = when (orientation) {
             Orientation.UPPER_HORIZONTAL -> arrayOf(
-                Pair(getX() + 1, getY()),
-                Pair(getX(), getY() + 1),
-                Pair(getX() + 1, getY() + 1),
-                Pair(getX() + 2, getY() + 1)
+                Pair(getX(), getY()),
+                Pair(getX(), getY()),
+                Pair(getX(), getY()),
+                Pair(getX(), getY()),
             )
             Orientation.RIGHT_VERTICAL -> arrayOf(
-                Pair(getX() + 1, getY()),
-                Pair(getX(), getY() + 1),
-                Pair(getX() + 1, getY() + 1),
-                Pair(getX() + 1, getY() + 2)
+                Pair(getX(), getY()),
+                Pair(getX(), getY()),
+                Pair(getX(), getY()),
+                Pair(getX(), getY()),
             )
             Orientation.LOWER_HORIZONTAL -> arrayOf(
-                Pair(getX() + 1, getY()),
-                Pair(getX(), getY() + 1),
-                Pair(getX() + 1, getY() + 1),
-                Pair(getX() + 2, getY())
+                Pair(getX(), getY()),
+                Pair(getX(), getY()),
+                Pair(getX(), getY()),
+                Pair(getX(), getY()),
             )
             Orientation.LEFT_VERTICAL -> arrayOf(
-                Pair(getX() + 2, getY()),
-                Pair(getX() + 1, getY() + 1),
-                Pair(getX() + 2, getY() + 1),
-                Pair(getX() + 2, getY() + 2)
+                Pair(getX(), getY()),
+                Pair(getX(), getY()),
+                Pair(getX(), getY()),
+                Pair(getX(), getY()),
             )
         }
     }
     override fun rotateClockwise() {
         rotateThisClockwise()
+    }
+
+    override fun rotateAntiClockwise() {
     }
 }
 class Z : Tetrimino(), Rotatable {
@@ -259,31 +281,34 @@ class Z : Tetrimino(), Rotatable {
         tetrominoCoordinates = when (orientation) {
             Orientation.UPPER_HORIZONTAL -> arrayOf(
                 Pair(getX(), getY()),
-                Pair(getX() + 1, getY()),
-                Pair(getX() + 1, getY() + 1),
-                Pair(getX() + 2, getY() + 1)
+                Pair(getX(), getY()),
+                Pair(getX(), getY()),
+                Pair(getX(), getY()),
             )
             Orientation.RIGHT_VERTICAL -> arrayOf(
-                Pair(getX() + 1, getY() + 1),
-                Pair(getX(), getY() + 1),
-                Pair(getX() + 1, getY()),
-                Pair(getX() + 2, getY())
+                Pair(getX(), getY()),
+                Pair(getX(), getY()),
+                Pair(getX(), getY()),
+                Pair(getX(), getY()),
             )
             Orientation.LOWER_HORIZONTAL -> arrayOf(
-                Pair(getX() + 2, getY()),
-                Pair(getX() + 1, getY()),
-                Pair(getX() + 1, getY() + 1),
-                Pair(getX(), getY() + 1)
+                Pair(getX(), getY()),
+                Pair(getX(), getY()),
+                Pair(getX(), getY()),
+                Pair(getX(), getY()),
             )
             Orientation.LEFT_VERTICAL -> arrayOf(
-                Pair(getX(), getY() + 2),
-                Pair(getX(), getY() + 1),
-                Pair(getX() + 1, getY() + 1),
-                Pair(getX() + 1, getY())
+                Pair(getX(), getY()),
+                Pair(getX(), getY()),
+                Pair(getX(), getY()),
+                Pair(getX(), getY()),
             )
         }
     }
     override fun rotateClockwise() {
         rotateThisClockwise()
+    }
+
+    override fun rotateAntiClockwise() {
     }
 }

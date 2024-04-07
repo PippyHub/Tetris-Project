@@ -14,13 +14,13 @@ class Game {
     private var state: GameState = GameState.NOT_PLAYING
     private var tetriminoList = mutableListOf<Tetrimino>()
     private lateinit var tetrimino: Tetrimino
-    private var tetriminoY = 0
+    private var tetriminoY: Int = 0
     private var timeExists: Double = 0.0
     private var timeSimulated: Double = 0.0
-    private var gravity: Double = 0.0 //setGravity(1)
+    private var gravity = setGravity(0)
     init {
         repeat(3) {
-            tetriminoList.add(tetriminos.J())
+            tetriminoList.add(tetriminos.O())
         }
         //TODO("Generate 7 bag")
     }
@@ -38,11 +38,12 @@ class Game {
         tetriminoList.removeAt(0)
         tetriminoList.add(generate())
         setTetrimino(tetrimino)
+        tetriminoY = tetrimino.getY()
         state = GameState.DROPPING
     }
     private fun dropping() {
         if (timeExists > timeSimulated) {
-            tetriminoY++
+            tetriminoY--
             timeSimulated += 1.0 / gravity
             tetrimino.setY(tetriminoY)
             tetrimino.setCoordinates()
@@ -54,6 +55,7 @@ class Game {
     }
     private fun createSpeedCurve(): Map<Int, Double> {
         val speeds = mapOf(
+            0 to 0.0,
             1 to 0.01667,
             2 to 0.021017,
             3 to 0.026977,

@@ -12,8 +12,8 @@ class Tetriminoes(g: Graphics?) {
         tetrimino?.let {
             for ((x, y) in it.tetrominoCoordinates) {
                 g?.fillRoundRect(
-                    Grid.GRID_X + x * minoSize,
-                    Grid.GRID_Y + y * minoSize,
+                    Grid.GRID_X + (x - 1) * minoSize,
+                    Grid.HEIGHT + Grid.GRID_Y - y *  minoSize,
                     minoSize,
                     minoSize,
                     10,
