@@ -1,9 +1,9 @@
 package game
 
-import tetriminos.Collision.downCollide
-import tetriminos.Generator.sevenBag
-import tetriminos.Tetrimino
-import tetriminos.Tetrimino.Companion.setTetrimino
+import tetriminos.Collisions.downCollide
+import tetriminos.Generations.sevenBag
+import tetriminos.Tetriminos
+import tetriminos.Tetriminos.Companion.setTetrimino
 
 class Game {
     enum class GameState {
@@ -13,8 +13,8 @@ class Game {
         GAME_OVER
     }
     private var state: GameState = GameState.NOT_PLAYING
-    private lateinit var tetrimino: Tetrimino
-    private var bag: MutableList<Tetrimino>
+    private lateinit var tetriminos: Tetriminos
+    private var bag: MutableList<Tetriminos>
     private var tetriminoY: Int = 0
     private var timeExists: Double = 0.0
     private var timeSimulated: Double = 0.0
@@ -34,26 +34,26 @@ class Game {
     private fun generating() {
         if (bag.isEmpty()) {
             bag = sevenBag()
-            tetrimino = bag.first()
+            tetriminos = bag.first()
             bag.removeAt(0)
         } else {
-            tetrimino = bag.first()
+            tetriminos = bag.first()
             bag.removeAt(0)
         }
-        setTetrimino(tetrimino)
-        tetriminoY = tetrimino.getY()
+        setTetrimino(tetriminos)
+        tetriminoY = tetriminos.getY()
         state = GameState.DROPPING
     }
     private fun dropping() {
         if (timeExists > timeSimulated) {
-            if (downCollide(tetrimino)) {
-                tetrimino.setCoordinates()
+            if (downCollide(tetriminos)) {
+                tetriminos.setCoordinates()
                 state = GameState.GENERATING
             } else {
                 tetriminoY--
                 timeSimulated += 1.0 / gravity
-                tetrimino.setY(tetriminoY)
-                tetrimino.setCoordinates()
+                tetriminos.setY(tetriminoY)
+                tetriminos.setCoordinates()
             }
         }
     }

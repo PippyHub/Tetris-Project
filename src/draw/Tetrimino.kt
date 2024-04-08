@@ -1,10 +1,11 @@
 package draw
 
 import tetriminos.*
-import tetriminos.Tetrimino.Companion.getTetrimino
+import tetriminos.Tetriminos
+import tetriminos.Tetriminos.Companion.getTetrimino
 import java.awt.Color
 import java.awt.Graphics
-class Tetriminoes(g: Graphics?) {
+class Tetrimino(g: Graphics?) {
     companion object {
         const val MINO_SIZE = Grid.GRID_WIDTH / 10
     }
@@ -12,9 +13,9 @@ class Tetriminoes(g: Graphics?) {
         fallingTetrimino(getTetrimino(), g)
         placedTetrimino(g)
     }
-    private fun fallingTetrimino(tetrimino: Tetrimino?, g: Graphics?) {
-        g?.color = tetrimino?.let { getColor(it) }
-        tetrimino?.let {
+    private fun fallingTetrimino(tetriminos: Tetriminos?, g: Graphics?) {
+        g?.color = tetriminos?.let { getColor(it) }
+        tetriminos?.let {
             for ((x, y) in it.tetriminoCoordinates) {
                 g?.fillRoundRect(
                     Grid.GRID_X + (x - 1) * MINO_SIZE,
@@ -30,8 +31,8 @@ class Tetriminoes(g: Graphics?) {
     private fun placedTetrimino(g: Graphics?) {
         //TODO()
     }
-    private fun getColor(tetrimino: Tetrimino): Color {
-        return when (tetrimino) {
+    private fun getColor(tetriminos: Tetriminos): Color {
+        return when (tetriminos) {
             is I -> Color(0f, 1f, 1f, 0.5f)
             is J -> Color(0f, 0f, 1f, 0.5f)
             is L -> Color(1f, 0.5f, 0f, 0.5f)

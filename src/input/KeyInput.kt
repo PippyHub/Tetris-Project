@@ -1,11 +1,11 @@
 package input
 
 import swing.Panel
-import tetriminos.Rotatable
-import tetriminos.Collision.leftCollide
-import tetriminos.Collision.rightCollide
-import tetriminos.Tetrimino
-import tetriminos.Tetrimino.Companion.getTetrimino
+import tetriminos.Rotations
+import tetriminos.Collisions.leftCollide
+import tetriminos.Collisions.rightCollide
+import tetriminos.Tetriminos
+import tetriminos.Tetriminos.Companion.getTetrimino
 import java.awt.event.KeyEvent
 import java.awt.event.KeyListener
 class KeyInput(private var panel: Panel) : KeyListener {
@@ -13,27 +13,27 @@ class KeyInput(private var panel: Panel) : KeyListener {
     override fun keyTyped(e: KeyEvent?) {
     }
     override fun keyPressed(e: KeyEvent?) {
-        val tetrimino: Tetrimino = getTetrimino() ?: return
-        tetriminoX = tetrimino.getX()
+        val tetriminos: Tetriminos = getTetrimino() ?: return
+        tetriminoX = tetriminos.getX()
         e?.let {
             when (it.keyCode) {
                 KeyEvent.VK_LEFT -> {
-                    if (leftCollide(tetrimino)) return
+                    if (leftCollide(tetriminos)) return
                     tetriminoX -= 1
-                    tetrimino.setX(tetriminoX)
-                    tetrimino.setCoordinates()
+                    tetriminos.setX(tetriminoX)
+                    tetriminos.setCoordinates()
                 }
                 KeyEvent.VK_RIGHT -> {
-                    if (rightCollide(tetrimino)) return
+                    if (rightCollide(tetriminos)) return
                     tetriminoX += 1
-                    tetrimino.setX(tetriminoX)
-                    tetrimino.setCoordinates()
+                    tetriminos.setX(tetriminoX)
+                    tetriminos.setCoordinates()
                 }
                 KeyEvent.VK_UP -> {
-                    if (tetrimino is Rotatable) {
-                        tetrimino.rotateThisClockwise()
+                    if (tetriminos is Rotations) {
+                        tetriminos.rotateThisClockwise()
                     }
-                    tetrimino.setCoordinates()
+                    tetriminos.setCoordinates()
                 }
                 KeyEvent.VK_DOWN -> {
                     TODO("Implement non-locking soft drop")
@@ -45,10 +45,10 @@ class KeyInput(private var panel: Panel) : KeyListener {
                     TODO("Implement hold piece functionality")
                 }
                 KeyEvent.VK_Z, KeyEvent.VK_CONTROL -> {
-                    if (tetrimino is Rotatable) {
-                        tetrimino.rotateThisAntiClockwise()
+                    if (tetriminos is Rotations) {
+                        tetriminos.rotateThisAntiClockwise()
                     }
-                    tetrimino.setCoordinates()
+                    tetriminos.setCoordinates()
                 }
                 else -> {}
             }

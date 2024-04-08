@@ -2,7 +2,7 @@ package swing
 
 import draw.Background
 import draw.Grid
-import draw.Tetriminoes
+import draw.Tetrimino
 import game.Game
 import input.KeyInput
 import input.MouseInput
@@ -31,6 +31,6 @@ class Panel : JPanel() {
         super.paintComponent(g)
         Background(g)
         Grid(g)
-        Tetriminoes(g)
+        Tetrimino(g)
     }
 }

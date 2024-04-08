@@ -2,10 +2,10 @@ package swing
 
 import java.awt.Dimension
 import javax.swing.JFrame
-private class Frame : JFrame() {
-    val boardWidth = Panel.BOARD_WIDTH
-    val boardHeight = Panel.BOARD_HEIGHT
-    val panel = Panel()
+class Frame : JFrame() {
+    private val boardWidth = Panel.BOARD_WIDTH
+    private val boardHeight = Panel.BOARD_HEIGHT
+    private val panel = Panel()
     init {
         frame()
     }
@@ -19,7 +19,4 @@ private class Frame : JFrame() {
         isResizable = false
         isVisible = true
     }
-}
-fun createFrame() {
-    Frame()
 }

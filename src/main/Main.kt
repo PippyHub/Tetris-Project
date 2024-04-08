@@ -1,7 +1,7 @@
 package main
 
-import swing.createFrame
+import swing.Frame
 import java.awt.EventQueue
 fun main() {
-    EventQueue.invokeLater(::createFrame)
+    EventQueue.invokeLater(::Frame)
 }

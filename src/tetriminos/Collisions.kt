@@ -4,11 +4,11 @@ import draw.Grid.Companion.GRID_HEIGHT
 import draw.Grid.Companion.GRID_WIDTH
 import draw.Grid.Companion.GRID_X
 import draw.Grid.Companion.GRID_Y
-import draw.Tetriminoes.Companion.MINO_SIZE
+import draw.Tetrimino.Companion.MINO_SIZE
 
-object Collision {
-    fun leftCollide(tetrimino: Tetrimino): Boolean {
-        for ((x, _) in tetrimino.tetriminoCoordinates) {
+object Collisions {
+    fun leftCollide(tetriminos: Tetriminos): Boolean {
+        for ((x, _) in tetriminos.tetriminoCoordinates) {
             val leftX = x - 1
             if (GRID_X + leftX * MINO_SIZE <= GRID_X) {
                 return true
@@ -16,8 +16,8 @@ object Collision {
         }
         return false
     }
-    fun rightCollide(tetrimino: Tetrimino): Boolean {
-        for ((x, _) in tetrimino.tetriminoCoordinates) {
+    fun rightCollide(tetriminos: Tetriminos): Boolean {
+        for ((x, _) in tetriminos.tetriminoCoordinates) {
             val rightX = x + 1
             if (GRID_X + rightX * MINO_SIZE > GRID_X + GRID_WIDTH) {
                 return true
@@ -25,8 +25,8 @@ object Collision {
         }
         return false
     }
-    fun downCollide(tetrimino: Tetrimino): Boolean {
-        for ((_, y) in tetrimino.tetriminoCoordinates) {
+    fun downCollide(tetriminos: Tetriminos): Boolean {
+        for ((_, y) in tetriminos.tetriminoCoordinates) {
             if (GRID_HEIGHT + GRID_Y - y * MINO_SIZE > GRID_HEIGHT) {
                 return true
             }
