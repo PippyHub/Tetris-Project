@@ -1,5 +1,6 @@
 package game
 
+import tetriminos.Collision.downCollide
 import tetriminos.Generator.sevenBag
 import tetriminos.Tetrimino
 import tetriminos.Tetrimino.Companion.setTetrimino
@@ -13,13 +14,13 @@ class Game {
     }
     private var state: GameState = GameState.NOT_PLAYING
     private lateinit var tetrimino: Tetrimino
-    private lateinit var bag: MutableList<Tetrimino>
+    private var bag: MutableList<Tetrimino>
     private var tetriminoY: Int = 0
     private var timeExists: Double = 0.0
     private var timeSimulated: Double = 0.0
-    private var gravity = setGravity(0)
+    private var gravity = setGravity(5)
     init {
-        bag = sevenBag()
+        bag = sevenBag() //TODO(Add buffer of 3 pieces for preview e.g. if bag.len < 3 sevenBag().toEnd)
     }
     fun update(deltaUpdate: Double) {
         timeExists += deltaUpdate
@@ -35,23 +36,25 @@ class Game {
             bag = sevenBag()
             tetrimino = bag.first()
             bag.removeAt(0)
-
         } else {
             tetrimino = bag.first()
             bag.removeAt(0)
         }
-
-
         setTetrimino(tetrimino)
         tetriminoY = tetrimino.getY()
         state = GameState.DROPPING
     }
     private fun dropping() {
         if (timeExists > timeSimulated) {
-            tetriminoY--
-            timeSimulated += 1.0 / gravity
-            tetrimino.setY(tetriminoY)
-            tetrimino.setCoordinates()
+            if (downCollide(tetrimino)) {
+                tetrimino.setCoordinates()
+                state = GameState.GENERATING
+            } else {
+                tetriminoY--
+                timeSimulated += 1.0 / gravity
+                tetrimino.setY(tetriminoY)
+                tetrimino.setCoordinates()
+            }
         }
     }
     fun setGravity(level: Int): Double {

@@ -9,10 +9,13 @@ class Tetriminoes(g: Graphics?) {
         const val MINO_SIZE = Grid.GRID_WIDTH / 10
     }
     init {
-        val tetrimino = getTetrimino()
+        fallingTetrimino(getTetrimino(), g)
+        placedTetrimino(g)
+    }
+    private fun fallingTetrimino(tetrimino: Tetrimino?, g: Graphics?) {
         g?.color = tetrimino?.let { getColor(it) }
         tetrimino?.let {
-            for ((x, y) in it.tetrominoCoordinates) {
+            for ((x, y) in it.tetriminoCoordinates) {
                 g?.fillRoundRect(
                     Grid.GRID_X + (x - 1) * MINO_SIZE,
                     Grid.GRID_HEIGHT + Grid.GRID_Y - y *  MINO_SIZE,
@@ -23,6 +26,9 @@ class Tetriminoes(g: Graphics?) {
                 )
             }
         }
+    }
+    private fun placedTetrimino(g: Graphics?) {
+        //TODO()
     }
     private fun getColor(tetrimino: Tetrimino): Color {
         return when (tetrimino) {

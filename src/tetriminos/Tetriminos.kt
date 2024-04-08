@@ -16,9 +16,9 @@ open class Tetrimino : Actions() {
         LEFT_VERTICAL
     }
     var orientation: Orientation = Orientation.UPPER_HORIZONTAL
-    private var minoX = 0
-    private var minoY = 0
-    var tetrominoCoordinates: Array<Pair<Int, Int>> = emptyArray()
+    private var minoX = 4
+    private var minoY = 21
+    var tetriminoCoordinates: Array<Pair<Int, Int>> = emptyArray()
     fun setX(x: Int) {
         minoX = x
     }
@@ -36,13 +36,8 @@ open class Tetrimino : Actions() {
     open fun rotateThisAntiClockwise() {}
 }
 class I : Tetrimino(), Rotatable {
-    init {
-        setX(1)
-        setY(21)
-        setCoordinates()
-    }
     override fun setCoordinates() {
-        tetrominoCoordinates = when (orientation) {
+        tetriminoCoordinates = when (orientation) {
             Orientation.UPPER_HORIZONTAL -> arrayOf(
                 Pair(getX(), getY() - 1),
                 Pair(getX() + 1, getY() - 1),
@@ -77,13 +72,8 @@ class I : Tetrimino(), Rotatable {
     }
 }
 class J : Tetrimino(), Rotatable {
-    init {
-        setX(1)
-        setY(21)
-        setCoordinates()
-    }
     override fun setCoordinates() {
-        tetrominoCoordinates = when (orientation) {
+        tetriminoCoordinates = when (orientation) {
             Orientation.UPPER_HORIZONTAL -> arrayOf(
                 Pair(getX(), getY()),
                 Pair(getX(), getY() - 1),
@@ -118,13 +108,9 @@ class J : Tetrimino(), Rotatable {
     }
 }
 class L : Tetrimino(), Rotatable {
-    init {
-        setX(1)
-        setY(21)
-        setCoordinates()
-    }
+    
     override fun setCoordinates() {
-        tetrominoCoordinates = when (orientation) {
+        tetriminoCoordinates = when (orientation) {
             Orientation.UPPER_HORIZONTAL -> arrayOf(
                 Pair(getX() + 2, getY()),
                 Pair(getX(), getY() - 1),
@@ -162,13 +148,8 @@ class L : Tetrimino(), Rotatable {
     }
 }
 class O : Tetrimino() {
-    init {
-        setX(1)
-        setY(21)
-        setCoordinates()
-    }
     override fun setCoordinates() {
-        tetrominoCoordinates = arrayOf(
+        tetriminoCoordinates = arrayOf(
             Pair(getX() + 1, getY()),
             Pair(getX() + 2, getY()),
             Pair(getX() + 1, getY() - 1),
@@ -177,13 +158,8 @@ class O : Tetrimino() {
     }
 }
 class S : Tetrimino(), Rotatable {
-    init {
-        setX(1)
-        setY(21)
-        setCoordinates()
-    }
     override fun setCoordinates() {
-        tetrominoCoordinates = when (orientation) {
+        tetriminoCoordinates = when (orientation) {
             Orientation.UPPER_HORIZONTAL -> arrayOf(
                 Pair(getX(), getY() - 1),
                 Pair(getX() + 1, getY() - 1),
@@ -218,13 +194,8 @@ class S : Tetrimino(), Rotatable {
     }
 }
 class T : Tetrimino(), Rotatable {
-    init {
-        setX(1)
-        setY(21)
-        setCoordinates()
-    }
     override fun setCoordinates() {
-        tetrominoCoordinates = when (orientation) {
+        tetriminoCoordinates = when (orientation) {
             Orientation.UPPER_HORIZONTAL -> arrayOf(
                 Pair(getX(), getY() - 1),
                 Pair(getX() + 1, getY() - 1),
@@ -259,13 +230,8 @@ class T : Tetrimino(), Rotatable {
     }
 }
 class Z : Tetrimino(), Rotatable {
-    init {
-        setX(1)
-        setY(21)
-        setCoordinates()
-    }
     override fun setCoordinates() {
-        tetrominoCoordinates = when (orientation) {
+        tetriminoCoordinates = when (orientation) {
             Orientation.UPPER_HORIZONTAL -> arrayOf(
                 Pair(getX(), getY()),
                 Pair(getX() + 1, getY()),

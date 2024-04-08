@@ -3,10 +3,10 @@ package tetriminos
 import tetriminos.Tetrimino.Orientation
 
 object Generator {
-    private val tetrominoClasses = mutableListOf(I(), J(), L(), O(), S(), T(), Z())
     fun sevenBag(): MutableList<Tetrimino> {
-        tetrominoClasses.shuffle()
-        return tetrominoClasses
+        val tetriminoClasses = mutableListOf(I(), J(), L(), O(), S(), T(), Z())
+        val shuffledList = tetriminoClasses.shuffled().toMutableList()
+        return shuffledList
     }
 }
 interface Rotatable {
