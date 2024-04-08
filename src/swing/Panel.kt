@@ -16,7 +16,7 @@ class Panel : JPanel() {
         const val BOARD_WIDTH = 800
         const val BOARD_HEIGHT = 600
     }
-    val updateHandler = FrameHandler(this)
+    val frameHandler = FrameHandler(this)
     val eventHandler = EventHandler(this)
     private val game = Game()
     init {

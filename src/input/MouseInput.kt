@@ -9,12 +9,12 @@ class MouseInput(private var panel: Panel) : MouseListener, MouseMotionListener 
     override fun mouseClicked(e: MouseEvent?) {
         if (e?.button == MouseEvent.BUTTON1) {
             if (!running) {
-                panel.updateHandler.start()
+                panel.frameHandler.start()
                 running = true
             }
         } else if (e?.button == MouseEvent.BUTTON3) {
             if (running) {
-                panel.updateHandler.stop()
+                panel.frameHandler.stop()
                 running = false
             }
         }

@@ -20,7 +20,7 @@ class Game {
     private var gravity = setGravity(0)
     init {
         repeat(3) {
-            tetriminoList.add(tetriminos.O())
+            tetriminoList.add(tetriminos.L())
         }
         //TODO("Generate 7 bag")
     }

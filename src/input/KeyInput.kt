@@ -26,8 +26,9 @@ class KeyInput(private var panel: Panel) : KeyListener {
                 }
                 KeyEvent.VK_UP -> {
                     if (tetrimino is Rotatable) {
-                        tetrimino.rotateClockwise()
+                        tetrimino.rotateThisClockwise()
                     }
+                    tetrimino.setCoordinates()
                 }
                 KeyEvent.VK_DOWN -> {
                     TODO("Implement non-locking soft drop")
@@ -39,7 +40,10 @@ class KeyInput(private var panel: Panel) : KeyListener {
                     TODO("Implement hold piece functionality")
                 }
                 KeyEvent.VK_Z, KeyEvent.VK_CONTROL -> {
-                    TODO("Implement rotation 90 degrees counterclockwise")
+                    if (tetrimino is Rotatable) {
+                        tetrimino.rotateThisAntiClockwise()
+                    }
+                    tetrimino.setCoordinates()
                 }
                 else -> {}
             }
