@@ -1,6 +1,6 @@
 package tetriminos
 
-interface Rotations {
+interface Rotatable {
     fun rotateClockwise(orientation: Tetriminos.Orientation): Tetriminos.Orientation {
         return when (orientation) {
             Tetriminos.Orientation.UPPER_HORIZONTAL -> Tetriminos.Orientation.RIGHT_VERTICAL

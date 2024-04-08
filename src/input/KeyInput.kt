@@ -1,15 +1,15 @@
 package input
 
 import swing.Panel
-import tetriminos.Rotations
-import tetriminos.Collisions.leftCollide
-import tetriminos.Collisions.rightCollide
+import tetriminos.Rotatable
+import tetriminos.Collision.leftCollide
+import tetriminos.Collision.rightCollide
 import tetriminos.Tetriminos
 import tetriminos.Tetriminos.Companion.getTetrimino
 import java.awt.event.KeyEvent
 import java.awt.event.KeyListener
 class KeyInput(private var panel: Panel) : KeyListener {
-    private var tetriminoX = 0;
+    private var tetriminoX = 0
     override fun keyTyped(e: KeyEvent?) {
     }
     override fun keyPressed(e: KeyEvent?) {
@@ -30,7 +30,7 @@ class KeyInput(private var panel: Panel) : KeyListener {
                     tetriminos.setCoordinates()
                 }
                 KeyEvent.VK_UP -> {
-                    if (tetriminos is Rotations) {
+                    if (tetriminos is Rotatable) {
                         tetriminos.rotateThisClockwise()
                     }
                     tetriminos.setCoordinates()
@@ -45,7 +45,7 @@ class KeyInput(private var panel: Panel) : KeyListener {
                     TODO("Implement hold piece functionality")
                 }
                 KeyEvent.VK_Z, KeyEvent.VK_CONTROL -> {
-                    if (tetriminos is Rotations) {
+                    if (tetriminos is Rotatable) {
                         tetriminos.rotateThisAntiClockwise()
                     }
                     tetriminos.setCoordinates()

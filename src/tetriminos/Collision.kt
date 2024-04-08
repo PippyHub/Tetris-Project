@@ -6,7 +6,7 @@ import draw.Grid.Companion.GRID_X
 import draw.Grid.Companion.GRID_Y
 import draw.Tetrimino.Companion.MINO_SIZE
 
-object Collisions {
+object Collision {
     fun leftCollide(tetriminos: Tetriminos): Boolean {
         for ((x, _) in tetriminos.tetriminoCoordinates) {
             val leftX = x - 1

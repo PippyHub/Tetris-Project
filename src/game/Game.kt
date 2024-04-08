@@ -1,7 +1,7 @@
 package game
 
-import tetriminos.Collisions.downCollide
-import tetriminos.Generations.sevenBag
+import tetriminos.Collision.downCollide
+import tetriminos.Generation.sevenBag
 import tetriminos.Tetriminos
 import tetriminos.Tetriminos.Companion.setTetrimino
 

@@ -35,7 +35,7 @@ open class Tetriminos : Actions() {
     open fun rotateThisClockwise() {}
     open fun rotateThisAntiClockwise() {}
 }
-class I : Tetriminos(), Rotations {
+class I : Tetriminos(), Rotatable {
     override fun setCoordinates() {
         tetriminoCoordinates = when (orientation) {
             Orientation.UPPER_HORIZONTAL -> arrayOf(
@@ -71,7 +71,7 @@ class I : Tetriminos(), Rotations {
         orientation = rotateAntiClockwise(orientation)
     }
 }
-class J : Tetriminos(), Rotations {
+class J : Tetriminos(), Rotatable {
     override fun setCoordinates() {
         tetriminoCoordinates = when (orientation) {
             Orientation.UPPER_HORIZONTAL -> arrayOf(
@@ -107,7 +107,7 @@ class J : Tetriminos(), Rotations {
         orientation = rotateAntiClockwise(orientation)
     }
 }
-class L : Tetriminos(), Rotations {
+class L : Tetriminos(), Rotatable {
     
     override fun setCoordinates() {
         tetriminoCoordinates = when (orientation) {
@@ -157,7 +157,7 @@ class O : Tetriminos() {
         )
     }
 }
-class S : Tetriminos(), Rotations {
+class S : Tetriminos(), Rotatable {
     override fun setCoordinates() {
         tetriminoCoordinates = when (orientation) {
             Orientation.UPPER_HORIZONTAL -> arrayOf(
@@ -193,7 +193,7 @@ class S : Tetriminos(), Rotations {
         orientation = rotateAntiClockwise(orientation)
     }
 }
-class T : Tetriminos(), Rotations {
+class T : Tetriminos(), Rotatable {
     override fun setCoordinates() {
         tetriminoCoordinates = when (orientation) {
             Orientation.UPPER_HORIZONTAL -> arrayOf(
@@ -229,7 +229,7 @@ class T : Tetriminos(), Rotations {
         orientation = rotateAntiClockwise(orientation)
     }
 }
-class Z : Tetriminos(), Rotations {
+class Z : Tetriminos(), Rotatable {
     override fun setCoordinates() {
         tetriminoCoordinates = when (orientation) {
             Orientation.UPPER_HORIZONTAL -> arrayOf(

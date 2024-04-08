@@ -29,7 +29,6 @@ class Tetrimino(g: Graphics?) {
         }
     }
     private fun placedTetrimino(g: Graphics?) {
-        //TODO()
     }
     private fun getColor(tetriminos: Tetriminos): Color {
         return when (tetriminos) {
