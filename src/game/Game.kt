@@ -1,6 +1,6 @@
 package game
 
-import tetriminos.Generator.generate
+import tetriminos.Generator.sevenBag
 import tetriminos.Tetrimino
 import tetriminos.Tetrimino.Companion.setTetrimino
 
@@ -12,17 +12,14 @@ class Game {
         GAME_OVER
     }
     private var state: GameState = GameState.NOT_PLAYING
-    private var tetriminoList = mutableListOf<Tetrimino>()
     private lateinit var tetrimino: Tetrimino
+    private lateinit var bag: MutableList<Tetrimino>
     private var tetriminoY: Int = 0
     private var timeExists: Double = 0.0
     private var timeSimulated: Double = 0.0
     private var gravity = setGravity(0)
     init {
-        repeat(3) {
-            tetriminoList.add(tetriminos.L())
-        }
-        //TODO("Generate 7 bag")
+        bag = sevenBag()
     }
     fun update(deltaUpdate: Double) {
         timeExists += deltaUpdate
@@ -34,9 +31,17 @@ class Game {
         }
     }
     private fun generating() {
-        tetrimino = tetriminoList.first()
-        tetriminoList.removeAt(0)
-        tetriminoList.add(generate())
+        if (bag.isEmpty()) {
+            bag = sevenBag()
+            tetrimino = bag.first()
+            bag.removeAt(0)
+
+        } else {
+            tetrimino = bag.first()
+            bag.removeAt(0)
+        }
+
+
         setTetrimino(tetrimino)
         tetriminoY = tetrimino.getY()
         state = GameState.DROPPING

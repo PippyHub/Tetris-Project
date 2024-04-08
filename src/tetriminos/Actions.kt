@@ -1,6 +1,14 @@
 package tetriminos
 
 import tetriminos.Tetrimino.Orientation
+
+object Generator {
+    private val tetrominoClasses = mutableListOf(I(), J(), L(), O(), S(), T(), Z())
+    fun sevenBag(): MutableList<Tetrimino> {
+        tetrominoClasses.shuffle()
+        return tetrominoClasses
+    }
+}
 interface Rotatable {
     fun rotateClockwise(orientation: Orientation): Orientation {
         return when (orientation) {

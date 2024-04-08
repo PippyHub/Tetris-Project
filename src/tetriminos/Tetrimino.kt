@@ -1,15 +1,4 @@
 package tetriminos
-
-import kotlin.random.Random
-
-object Generator {
-    private val tetrominoClasses = listOf(I(), J(), L(), O(), S(), T(), Z())
-
-    fun generate(): Tetrimino {
-        val randomIndex = Random.nextInt(0, tetrominoClasses.size)
-        return tetrominoClasses[randomIndex]
-    }
-}
 open class Tetrimino : Actions() {
     companion object {
         private var currentTetrimino: Tetrimino? = null

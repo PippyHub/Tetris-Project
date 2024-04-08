@@ -2,6 +2,9 @@ package input
 
 import swing.Panel
 import tetriminos.Rotatable
+import tetriminos.Collision.leftCollide
+import tetriminos.Collision.rightCollide
+import tetriminos.Tetrimino
 import tetriminos.Tetrimino.Companion.getTetrimino
 import java.awt.event.KeyEvent
 import java.awt.event.KeyListener
@@ -10,16 +13,18 @@ class KeyInput(private var panel: Panel) : KeyListener {
     override fun keyTyped(e: KeyEvent?) {
     }
     override fun keyPressed(e: KeyEvent?) {
-        val tetrimino = getTetrimino()
-        tetriminoX = tetrimino?.getX()!!
+        val tetrimino: Tetrimino = getTetrimino() ?: return
+        tetriminoX = tetrimino.getX()
         e?.let {
             when (it.keyCode) {
                 KeyEvent.VK_LEFT -> {
+                    if (leftCollide(tetrimino)) return
                     tetriminoX -= 1
                     tetrimino.setX(tetriminoX)
                     tetrimino.setCoordinates()
                 }
                 KeyEvent.VK_RIGHT -> {
+                    if (rightCollide(tetrimino)) return
                     tetriminoX += 1
                     tetrimino.setX(tetriminoX)
                     tetrimino.setCoordinates()

@@ -5,17 +5,19 @@ import tetriminos.Tetrimino.Companion.getTetrimino
 import java.awt.Color
 import java.awt.Graphics
 class Tetriminoes(g: Graphics?) {
-    private val minoSize = Grid.WIDTH / 10
+    companion object {
+        const val MINO_SIZE = Grid.GRID_WIDTH / 10
+    }
     init {
         val tetrimino = getTetrimino()
         g?.color = tetrimino?.let { getColor(it) }
         tetrimino?.let {
             for ((x, y) in it.tetrominoCoordinates) {
                 g?.fillRoundRect(
-                    Grid.GRID_X + (x - 1) * minoSize,
-                    Grid.HEIGHT + Grid.GRID_Y - y *  minoSize,
-                    minoSize,
-                    minoSize,
+                    Grid.GRID_X + (x - 1) * MINO_SIZE,
+                    Grid.GRID_HEIGHT + Grid.GRID_Y - y *  MINO_SIZE,
+                    MINO_SIZE,
+                    MINO_SIZE,
                     10,
                     10
                 )
@@ -34,5 +36,4 @@ class Tetriminoes(g: Graphics?) {
             else -> Color(1f, 1f, 1f, 0.5f)
         }
     }
-
 }
