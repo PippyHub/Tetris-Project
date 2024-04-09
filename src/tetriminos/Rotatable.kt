@@ -1,6 +1,13 @@
 package tetriminos
 
 interface Rotatable {
+    var orientation: Tetriminos.Orientation
+    fun rotateClockwise() {
+        orientation = rotateClockwise(orientation)
+    }
+    fun rotateAntiClockwise() {
+        orientation = rotateAntiClockwise(orientation)
+    }
     fun rotateClockwise(orientation: Tetriminos.Orientation): Tetriminos.Orientation {
         return when (orientation) {
             Tetriminos.Orientation.UPPER_HORIZONTAL -> Tetriminos.Orientation.RIGHT_VERTICAL
@@ -18,3 +25,4 @@ interface Rotatable {
         }
     }
 }
+

@@ -1,11 +1,5 @@
 package tetriminos
 open class Tetriminos : Drop(), Place {
-    private lateinit var _place: ArrayList<Tetriminos>
-    override var place: ArrayList<Tetriminos>
-        get() = _place
-        set(value) {
-            _place = value
-        }
     companion object {
         private var currentTetriminos: Tetriminos? = null
         fun setTetrimino(tetriminos: Tetriminos) {
@@ -24,7 +18,6 @@ open class Tetriminos : Drop(), Place {
     var orientation: Orientation = Orientation.UPPER_HORIZONTAL
     private var minoX = 4
     private var minoY = 21
-    var tetriminoCoordinates: Array<Pair<Int, Int>> = emptyArray()
     fun setX(x: Int) {
         minoX = x
     }
@@ -37,9 +30,8 @@ open class Tetriminos : Drop(), Place {
     fun getY(): Int {
         return minoY
     }
+    var tetriminoCoordinates: Array<Pair<Int, Int>> = emptyArray()
     open fun setCoordinates() {}
-    open fun rotateThisClockwise() {}
-    open fun rotateThisAntiClockwise() {}
 }
 class I : Tetriminos(), Rotatable {
     override fun setCoordinates() {
@@ -70,12 +62,6 @@ class I : Tetriminos(), Rotatable {
             )
         }
     }
-    override fun rotateThisClockwise() {
-        orientation = rotateClockwise(orientation)
-    }
-    override fun rotateThisAntiClockwise() {
-        orientation = rotateAntiClockwise(orientation)
-    }
 }
 class J : Tetriminos(), Rotatable {
     override fun setCoordinates() {
@@ -105,12 +91,6 @@ class J : Tetriminos(), Rotatable {
                 Pair(getX(), getY() - 2)
             )
         }
-    }
-    override fun rotateThisClockwise() {
-        orientation = rotateClockwise(orientation)
-    }
-    override fun rotateThisAntiClockwise() {
-        orientation = rotateAntiClockwise(orientation)
     }
 }
 class L : Tetriminos(), Rotatable {
@@ -145,12 +125,6 @@ class L : Tetriminos(), Rotatable {
                 Pair(getX(), getY())
             )
         }
-    }
-    override fun rotateThisClockwise() {
-        orientation = rotateClockwise(orientation)
-    }
-    override fun rotateThisAntiClockwise() {
-        orientation = rotateAntiClockwise(orientation)
     }
 }
 class O : Tetriminos() {
@@ -192,12 +166,6 @@ class S : Tetriminos(), Rotatable {
             )
         }
     }
-    override fun rotateThisClockwise() {
-        orientation = rotateClockwise(orientation)
-    }
-    override fun rotateThisAntiClockwise() {
-        orientation = rotateAntiClockwise(orientation)
-    }
 }
 class T : Tetriminos(), Rotatable {
     override fun setCoordinates() {
@@ -228,12 +196,6 @@ class T : Tetriminos(), Rotatable {
             )
         }
     }
-    override fun rotateThisClockwise() {
-        orientation = rotateClockwise(orientation)
-    }
-    override fun rotateThisAntiClockwise() {
-        orientation = rotateAntiClockwise(orientation)
-    }
 }
 class Z : Tetriminos(), Rotatable {
     override fun setCoordinates() {
@@ -263,11 +225,5 @@ class Z : Tetriminos(), Rotatable {
                 Pair(getX() + 1, getY() - 1)
             )
         }
-    }
-    override fun rotateThisClockwise() {
-        orientation = rotateClockwise(orientation)
-    }
-    override fun rotateThisAntiClockwise() {
-        orientation = rotateAntiClockwise(orientation)
     }
 }

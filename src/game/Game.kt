@@ -18,7 +18,7 @@ class Game {
     private var tetriminoY: Int = 0
     private var timeExists: Double = 0.0
     private var timeSimulated: Double = 0.0
-    private var gravity = setGravity(5)
+    private var gravity = setGravity(13)
     init {
         bag = sevenBag() //TODO(Add buffer of 3 pieces for preview e.g. if bag.len < 3 sevenBag().toEnd)
     }
@@ -45,10 +45,11 @@ class Game {
         state = GameState.DROPPING
     }
     private fun dropping() {
-        if (timeExists > timeSimulated) {
+        while (timeExists > timeSimulated) {
             if (downCollide(tetriminos)) {
-                tetriminos.setCoordinates()
+                tetriminos.setPlace()
                 state = GameState.GENERATING
+                return
             } else {
                 tetriminoY--
                 timeSimulated += 1.0 / gravity
@@ -57,6 +58,7 @@ class Game {
             }
         }
     }
+
     fun setGravity(level: Int): Double {
         val speedCurve = createSpeedCurve()
         return speedCurve[level] ?: 1.0

@@ -32,7 +32,7 @@ class KeyInput(private var panel: Panel) : KeyListener {
                 }
                 KeyEvent.VK_UP -> {
                     if (tetriminos is Rotatable) {
-                        tetriminos.rotateThisClockwise()
+                        tetriminos.rotateClockwise()
                     }
                     tetriminos.setCoordinates()
                 }
@@ -47,7 +47,7 @@ class KeyInput(private var panel: Panel) : KeyListener {
                 }
                 KeyEvent.VK_Z, KeyEvent.VK_CONTROL -> {
                     if (tetriminos is Rotatable) {
-                        tetriminos.rotateThisAntiClockwise()
+                        tetriminos.rotateAntiClockwise()
                     }
                     tetriminos.setCoordinates()
                 }

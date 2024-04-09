@@ -1,8 +1,13 @@
 package tetriminos
 
 interface Place {
-    var place: ArrayList<Tetriminos>
-    fun place() {
-
+    companion object {
+        private var place: ArrayList<Tetriminos>? = ArrayList()
+        fun getPlace(): ArrayList<Tetriminos>? {
+            return place
+        }
+    }
+    fun setPlace() {
+        place?.add(this as Tetriminos)
     }
 }
