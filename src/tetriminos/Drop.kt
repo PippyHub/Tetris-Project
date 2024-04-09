@@ -1,6 +1,6 @@
 package tetriminos
 
-open class Actions {
+open class Drop {
     fun softDrop() {
     }
     fun hardDrop() {

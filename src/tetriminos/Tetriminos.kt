@@ -1,5 +1,11 @@
 package tetriminos
-open class Tetriminos : Actions() {
+open class Tetriminos : Drop(), Place {
+    private lateinit var _place: ArrayList<Tetriminos>
+    override var place: ArrayList<Tetriminos>
+        get() = _place
+        set(value) {
+            _place = value
+        }
     companion object {
         private var currentTetriminos: Tetriminos? = null
         fun setTetrimino(tetriminos: Tetriminos) {

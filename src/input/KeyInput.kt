@@ -4,6 +4,7 @@ import swing.Panel
 import tetriminos.Rotatable
 import tetriminos.Collision.leftCollide
 import tetriminos.Collision.rightCollide
+import tetriminos.Place
 import tetriminos.Tetriminos
 import tetriminos.Tetriminos.Companion.getTetrimino
 import java.awt.event.KeyEvent
