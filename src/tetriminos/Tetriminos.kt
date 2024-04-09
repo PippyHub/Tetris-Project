@@ -1,5 +1,5 @@
 package tetriminos
-open class Tetriminos : Drop(), Place {
+open class Tetriminos : Place {
     companion object {
         private var currentTetriminos: Tetriminos? = null
         fun setTetrimino(tetriminos: Tetriminos) {
@@ -17,7 +17,7 @@ open class Tetriminos : Drop(), Place {
     }
     var orientation: Orientation = Orientation.UPPER_HORIZONTAL
     private var minoX = 4
-    private var minoY = 21
+    private var minoY = 20
     fun setX(x: Int) {
         minoX = x
     }
@@ -94,7 +94,6 @@ class J : Tetriminos(), Rotatable {
     }
 }
 class L : Tetriminos(), Rotatable {
-    
     override fun setCoordinates() {
         tetriminoCoordinates = when (orientation) {
             Orientation.UPPER_HORIZONTAL -> arrayOf(

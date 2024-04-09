@@ -1,8 +1,10 @@
 package tetriminos
 
-open class Drop {
+object Drop {
     fun softDrop() {
+
     }
-    fun hardDrop() {
+    fun hardDrop(tetriminos: Tetriminos) {
+        tetriminos.setY(2)
     }
 }

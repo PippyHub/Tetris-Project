@@ -16,11 +16,12 @@ class Tetrimino(g: Graphics?) {
     }
     private fun fallingTetrimino(tetriminos: Tetriminos?, g: Graphics?) {
         tetriminos?.let {
+            tetriminos.setCoordinates()
             g?.color = getColor(tetriminos)
             for ((x, y) in it.tetriminoCoordinates) {
                 g?.fillRoundRect(
                     Grid.GRID_X + (x - 1) * MINO_SIZE,
-                    Grid.GRID_HEIGHT + Grid.GRID_Y - y *  MINO_SIZE,
+                    Grid.GRID_HEIGHT + Grid.GRID_Y - y * MINO_SIZE,
                     MINO_SIZE,
                     MINO_SIZE,
                     10,

@@ -4,6 +4,7 @@ import swing.Panel
 import tetriminos.Rotatable
 import tetriminos.Collision.leftCollide
 import tetriminos.Collision.rightCollide
+import tetriminos.Drop.hardDrop
 import tetriminos.Place
 import tetriminos.Tetriminos
 import tetriminos.Tetriminos.Companion.getTetrimino
@@ -40,14 +41,14 @@ class KeyInput(private var panel: Panel) : KeyListener {
                     TODO("Implement non-locking soft drop")
                 }
                 KeyEvent.VK_SPACE -> {
-                    TODO("Implement locking hard drop")
+                    hardDrop(tetriminos)
                 }
                 KeyEvent.VK_C, KeyEvent.VK_SHIFT -> {
                     TODO("Implement hold piece functionality")
                 }
                 KeyEvent.VK_Z, KeyEvent.VK_CONTROL -> {
                     if (tetriminos is Rotatable) {
-                        tetriminos.rotateAntiClockwise()
+                        tetriminos.rotateAntiClockwise() //TODO("Pieces stop falling if you rotate")
                     }
                     tetriminos.setCoordinates()
                 }
