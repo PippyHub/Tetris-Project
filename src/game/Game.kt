@@ -3,7 +3,7 @@ package game
 import tetriminos.Collision.downCollide
 import tetriminos.Generation.sevenBag
 import tetriminos.Tetriminos
-import tetriminos.Tetriminos.Companion.setTetrimino
+import tetriminos.Tetriminos.Companion.getTetriminos
 
 class Game {
     enum class GameState {
@@ -13,7 +13,6 @@ class Game {
         GAME_OVER
     }
     private var state: GameState = GameState.NOT_PLAYING
-    private lateinit var tetriminos: Tetriminos
     private var bag: MutableList<Tetriminos>
     private var tetriminoY: Int = 0
     private var timeExists: Double = 0.0
@@ -32,30 +31,31 @@ class Game {
         }
     }
     private fun generating() {
-        if (bag.isEmpty()) {
-            bag = sevenBag()
-            tetriminos = bag.first()
+        if (bag.isNotEmpty()) {
+            bag.first().setTetriminos()
             bag.removeAt(0)
         } else {
-            tetriminos = bag.first()
+            bag = sevenBag()
+            bag.first().setTetriminos()
             bag.removeAt(0)
         }
-        setTetrimino(tetriminos)
-        tetriminoY = tetriminos.getY()
         timeSimulated += 1.0 / gravity
         state = GameState.DROPPING
     }
     private fun dropping() {
-        if (downCollide(tetriminos)) {
-            tetriminos.setPlace()
-            state = GameState.GENERATING
-            return
-        }
-        while (timeExists > timeSimulated) {
-            tetriminoY--
-            timeSimulated += 1.0 / gravity
-            tetriminos.setY(tetriminoY)
-            tetriminos.setCoordinates()
+        getTetriminos()?.let {
+            tetriminoY = it.getY()
+            if (downCollide(it)) {
+                it.setPlace()
+                state = GameState.GENERATING
+                return
+            }
+            while (timeExists > timeSimulated) {
+                tetriminoY--
+                timeSimulated += 1.0 / gravity
+                it.setY(tetriminoY)
+                it.setCoordinates()
+            }
         }
     }
     fun setGravity(level: Int): Double {

@@ -1,12 +1,13 @@
 package tetriminos
-open class Tetriminos : Place {
+open class Tetriminos {
     companion object {
         private var currentTetriminos: Tetriminos? = null
-        fun setTetrimino(tetriminos: Tetriminos) {
-            currentTetriminos = tetriminos
-        }
-        fun getTetrimino(): Tetriminos? {
+        private var place: ArrayList<Tetriminos>? = ArrayList()
+        fun getTetriminos(): Tetriminos? {
             return currentTetriminos
+        }
+        fun getPlace(): ArrayList<Tetriminos>? {
+            return place
         }
     }
     enum class Orientation {
@@ -16,8 +17,16 @@ open class Tetriminos : Place {
         LEFT_VERTICAL
     }
     var orientation: Orientation = Orientation.UPPER_HORIZONTAL
+    var tetriminoCoordinates: Array<Pair<Int, Int>> = emptyArray()
     private var minoX = 4
     private var minoY = 20
+    open fun setTetriminos() {
+        currentTetriminos = this
+    }
+    fun setPlace() {
+        place?.add(this)
+    }
+    open fun setCoordinates() {}
     fun setX(x: Int) {
         minoX = x
     }
@@ -30,8 +39,6 @@ open class Tetriminos : Place {
     fun getY(): Int {
         return minoY
     }
-    var tetriminoCoordinates: Array<Pair<Int, Int>> = emptyArray()
-    open fun setCoordinates() {}
 }
 class I : Tetriminos(), Rotatable {
     override fun setCoordinates() {

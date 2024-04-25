@@ -5,9 +5,8 @@ import tetriminos.Rotatable
 import tetriminos.Collision.leftCollide
 import tetriminos.Collision.rightCollide
 import tetriminos.Drop.hardDrop
-import tetriminos.Place
 import tetriminos.Tetriminos
-import tetriminos.Tetriminos.Companion.getTetrimino
+import tetriminos.Tetriminos.Companion.getTetriminos
 import java.awt.event.KeyEvent
 import java.awt.event.KeyListener
 class KeyInput(private var panel: Panel) : KeyListener {
@@ -15,7 +14,7 @@ class KeyInput(private var panel: Panel) : KeyListener {
     override fun keyTyped(e: KeyEvent?) {
     }
     override fun keyPressed(e: KeyEvent?) {
-        val tetriminos: Tetriminos = getTetrimino() ?: return
+        val tetriminos: Tetriminos = getTetriminos() ?: return
         tetriminoX = tetriminos.getX()
         e?.let {
             when (it.keyCode) {

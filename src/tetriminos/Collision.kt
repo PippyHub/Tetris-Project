@@ -4,7 +4,7 @@ import draw.Grid.Companion.GRID_HEIGHT
 import draw.Grid.Companion.GRID_WIDTH
 import draw.Grid.Companion.GRID_X
 import draw.Grid.Companion.GRID_Y
-import draw.Tetrimino.Companion.MINO_SIZE
+import draw.Tetriminos.Companion.MINO_SIZE
 
 object Collision {
     fun leftCollide(tetriminos: Tetriminos): Boolean {
